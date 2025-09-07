@@ -1,0 +1,44 @@
+{
+  "name": "grameen-krishi-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Grameen Krishi agricultural consultation platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+<<<<<<< HEAD
+    "axios": "^1.11.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.0",
+=======
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.14.4",
+>>>>>>> 21c40bea8687e20a227d1350373a098a2cbbcc3e
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "agriculture",
+    "consultation",
+    "farming",
+    "nodejs",
+    "api"
+  ],
+  "author": "Grameen Krishi Team",
+  "license": "MIT"
+}

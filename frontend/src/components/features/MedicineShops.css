@@ -1,0 +1,653 @@
+/* Mobile-First Responsive Design */
+.medicine-shops {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.back-btn {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(220, 53, 69, 0.3);
+  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+}
+
+.header h2 {
+  color: #2c5530;
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #6c757d;
+  font-size: 1rem;
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.4;
+}
+
+/* Loading and Error States */
+.loading-state, .error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  text-align: center;
+}
+
+.loading-spinner {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: spin 2s linear infinite;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.retry-btn {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Info Cards */
+.prescription-info, .general-shopping-info {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-left: 5px solid #28a745;
+}
+
+.prescription-info h3, .general-shopping-info h3 {
+  margin: 0 0 1rem 0;
+  color: #2c5530;
+  font-size: 1.2rem;
+}
+
+.prescription-details p {
+  margin: 0.5rem 0;
+  color: #495057;
+}
+
+.prescription-medicines ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.shopping-note {
+  color: #6c757d;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Shops Section */
+.shops-section {
+  margin-bottom: 2rem;
+}
+
+.shops-section h3 {
+  color: #2c5530;
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.shops-subtitle {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.no-shops {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.no-shops h3 {
+  color: #6c757d;
+  margin: 0 0 1rem 0;
+}
+
+/* Responsive Grid for Shops */
+.shops-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Shop Cards */
+.shop-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #e9ecef;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #28a745, #20c997);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.shop-card:hover::before, .shop-card.selected::before {
+  transform: scaleX(1);
+}
+
+.shop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border-color: #28a745;
+}
+
+.shop-card.selected {
+  border-color: #28a745;
+  background: linear-gradient(135deg, #f8fff9 0%, #ffffff 100%);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.2);
+}
+
+.shop-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.shop-icon {
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e8f5e8, #f1f8f4);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.shop-badge {
+  position: absolute;
+  top: -5px;
+  right: 0;
+}
+
+.rating {
+  background: linear-gradient(135deg, #ffc107, #ff8800);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+.shop-info {
+  flex: 1;
+}
+
+.shop-name {
+  margin: 0 0 0.75rem 0;
+  color: #2c5530;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.location, .contact, .hours {
+  margin: 0.5rem 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.shop-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.delivery-time, .delivery-charge {
+  background: #f8f9fa;
+  color: #495057;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.shop-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f8f9fa;
+}
+
+.select-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.select-btn:hover {
+  background: linear-gradient(135deg, #218838, #1ea085);
+  transform: translateY(-1px);
+}
+
+.select-btn.selected {
+  background: linear-gradient(135deg, #198754, #157347);
+}
+
+/* Shop Details Section */
+.shop-details {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border: 2px solid #28a745;
+}
+
+.shop-details h3 {
+  margin: 0 0 1.5rem 0;
+  color: #2c5530;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Responsive Table */
+.medicines-table {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.medicines-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  min-width: 600px;
+}
+
+.medicines-table th {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.medicines-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f8f9fa;
+  vertical-align: top;
+}
+
+.medicines-table tr:hover {
+  background: #f8fff9;
+}
+
+.medicine-info strong {
+  color: #2c5530;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.medicine-info small {
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+.quantity-input {
+  width: 80px;
+  padding: 0.5rem;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.quantity-input:disabled {
+  background: #f8f9fa;
+  color: #6c757d;
+}
+
+.status {
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status.available {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.unavailable {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Order Summary */
+.order-summary {
+  background: linear-gradient(135deg, #f8fff9 0%, #ffffff 100%);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #28a745;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e8f5e8;
+  font-size: 1rem;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-row.total {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c5530;
+  padding-top: 1rem;
+  border-top: 2px solid #28a745;
+  margin-top: 0.5rem;
+}
+
+.proceed-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.proceed-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #218838, #1ea085);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.proceed-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.loading-availability {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
+/* Tablet Responsive */
+@media (min-width: 768px) {
+  .medicine-shops {
+    padding: 2rem;
+  }
+  
+  .header h2 {
+    font-size: 2.2rem;
+  }
+  
+  .shops-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .shop-card {
+    padding: 2rem;
+  }
+  
+  .shop-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 3rem;
+  }
+  
+  .shop-name {
+    font-size: 1.4rem;
+  }
+}
+
+/* Desktop Responsive */
+@media (min-width: 1024px) {
+  .medicine-shops {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem;
+  }
+  
+  .header h2 {
+    font-size: 2.5rem;
+  }
+  
+  .shops-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+  
+  .shop-details {
+    padding: 2.5rem;
+  }
+  
+  .order-summary {
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .proceed-btn {
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1440px) {
+  .shops-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile Specific Adjustments */
+@media (max-width: 480px) {
+  .medicine-shops {
+    padding: 0.75rem;
+  }
+  
+  .header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .shop-card {
+    padding: 1rem;
+  }
+  
+  .shop-header {
+    gap: 0.75rem;
+  }
+  
+  .shop-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+  }
+  
+  .shop-name {
+    font-size: 1.1rem;
+  }
+  
+  .location, .contact, .hours {
+    font-size: 0.8rem;
+  }
+  
+  .shop-features {
+    gap: 0.5rem;
+  }
+  
+  .delivery-time, .delivery-charge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .medicines-table table {
+    font-size: 0.9rem;
+    min-width: 500px;
+  }
+  
+  .medicines-table th, .medicines-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .quantity-input {
+    width: 60px;
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+  
+  .summary-row {
+    font-size: 0.95rem;
+  }
+  
+  .summary-row.total {
+    font-size: 1.2rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .shop-card {
+    border-width: 3px;
+  }
+  
+  .shop-card:hover, .shop-card.selected {
+    border-color: #000;
+  }
+  
+  .status.available {
+    background: #00ff00;
+    color: #000;
+  }
+  
+  .status.unavailable {
+    background: #ff0000;
+    color: #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .shop-card {
+    transition: none;
+  }
+  
+  .shop-card:hover {
+    transform: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+  }
+}
